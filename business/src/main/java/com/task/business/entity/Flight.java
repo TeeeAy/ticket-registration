@@ -3,6 +3,8 @@ package com.task.business.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "flights")
@@ -13,18 +15,23 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Flight {
     @Id
+    @GeneratedValue
     private Long id;
 
     private String flightNumber;
 
     @ManyToOne
-    @JoinColumn(name="departure_airport_id", nullable=false)
-    private Airport departureAirport;
+    @JoinColumn(name="flight_info_id", nullable=false)
+    private FlightInfo flightInfo;
 
     @ManyToOne
-    @JoinColumn(name="destination_airport_id", nullable=false)
-    private Airport destinationAirport;
+    @JoinColumn(name="plane_id", nullable=false)
+    private Plane plane;
 
+    private LocalDateTime departureTime;
+
+    @OneToMany(mappedBy = "flight")
+    private List<Ticket> tickets;
 
 
 }

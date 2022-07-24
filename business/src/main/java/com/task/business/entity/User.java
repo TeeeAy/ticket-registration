@@ -30,4 +30,7 @@ public class User {
     @ElementCollection
     private Set<Role> roles;
 
+    @OneToMany(mappedBy="user")
+    private Set<Ticket> tickets;
+
 }

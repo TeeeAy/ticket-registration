@@ -2,10 +2,7 @@ package com.task.business.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -17,10 +14,15 @@ import java.util.Set;
 @AllArgsConstructor
 public class Plane {
     @Id
+    @GeneratedValue
     private Long id;
     private String modelNumber;
+
     @OneToMany(mappedBy="plane")
     private Set<Seat> seats;
+
+    @OneToMany(mappedBy="plane")
+    private Set<FlightInfo> flightInfos;
 
 
 }

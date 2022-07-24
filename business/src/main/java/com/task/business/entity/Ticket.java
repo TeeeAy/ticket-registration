@@ -2,10 +2,7 @@ package com.task.business.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tickets")
@@ -20,6 +17,26 @@ public class Ticket {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name="flight_id", nullable=false)
+    private Flight flight;
+
+    @ManyToOne
+    @JoinColumn(name="seat_id", nullable=false)
+    private Seat seat;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
+    @Builder.Default
+    private boolean isAvailable = true;
+
+    @Builder.Default
+    private RefundStatus refundStatus = RefundStatus.REFUNDABLE;
+
+    //в минорных единицах
+    private Long price;
 
 
 }

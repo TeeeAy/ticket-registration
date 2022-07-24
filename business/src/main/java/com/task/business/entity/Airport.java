@@ -15,13 +15,16 @@ import java.util.List;
 public class Airport {
     @Id
     private Long id;
+
     private String name;
+
     private String country;
+
     private String city;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy ="departureAirport")
-    private List<Flight> ratesIC;
+    private List<FlightInfo> departureInfo;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy ="destinationAirport")
-    private List<Flight> ratesOC;
+    private List<FlightInfo> destinationInfo;
 }
