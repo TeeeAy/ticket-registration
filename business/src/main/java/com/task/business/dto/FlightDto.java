@@ -1,6 +1,8 @@
 package com.task.business.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.task.business.entity.FlightInfo;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder(toBuilder = true, setterPrefix = "with")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class FlightDto {
 
     private String flightNumber;
@@ -20,13 +23,8 @@ public class FlightDto {
 
     private Long planeId;
 
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime departureTime;
 
-    private FlightInfo flightInfo;
-
-    private Plane plane;
-
+    private Long flightId;
 
 }

@@ -1,5 +1,6 @@
 package com.task.business.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import java.time.Duration;
 import java.util.Set;
 
 @Entity
-@Table(name = "flights")
+@Table(name = "flightInfos")
 @Getter
 @Setter
 @Builder(toBuilder = true, setterPrefix = "with")

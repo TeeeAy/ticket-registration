@@ -33,6 +33,7 @@ public class Ticket {
     private boolean isAvailable = true;
 
     @Builder.Default
+    @Enumerated(EnumType.STRING)
     private RefundStatus refundStatus = RefundStatus.REFUNDABLE;
 
     //в минорных единицах

@@ -1,6 +1,5 @@
 package com.task.business.transformer;
 
-import com.task.business.dao.FlightInfoRepository;
 import com.task.business.dto.FlightDto;
 import com.task.business.entity.Flight;
 import com.task.business.service.FlightInfoService;
@@ -27,6 +26,14 @@ public class FlightTransformer {
     }
 
     public FlightDto transform(Flight flight) {
-        return FlightDto.builder().build();
+        return FlightDto.builder()
+                .withFlightNumber(flight.getFlightNumber())
+                .withDepartureTime(flight.getDepartureTime())
+//                .withFlightInfo(flight.getFlightInfo())
+   //             .withPlane(flight.getPlane())
+                .withFlightId(flight.getId())
+                .withPlaneId(null)
+                .withFlightInfoId(null)
+                .build();
     }
 }

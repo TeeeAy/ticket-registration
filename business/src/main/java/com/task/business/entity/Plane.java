@@ -1,5 +1,6 @@
 package com.task.business.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class Plane {
     private Set<Seat> seats;
 
     @OneToMany(mappedBy="plane")
-    private Set<FlightInfo> flightInfos;
+    private Set<Flight> flightInfos;
 
 
 }
